@@ -1,8 +1,6 @@
 
 <h1>
-  Editar / Agregar Héroe
-
-  <small>Superman</small>
+  {{ currentHero.id ? 'Editar': 'Agregar' }} héroe
 </h1>
 
 <mat-divider class="mb-2"></mat-divider>
@@ -10,46 +8,56 @@
 <div class="grid">
   <div class="col-12 sm:col-6">
     <mat-card>
-      <mat-card-content>
+      <mat-card-content class="p-4">
 
-        <div class="grid">
+        <form class="grid" [formGroup]="heroForm" onsubmit="onSubmit()">
           <mat-form-field class="col-12 sm:col-6">
             <mat-label> Super héroe </mat-label>
-            <input matInput type="text" required="true">
+            <input matInput type="text" required="true" formControlName="superhero">
           </mat-form-field>
 
           <mat-form-field class="col-12 sm:col-6">
             <mat-label> Alter ego </mat-label>
-            <input matInput type="text" required="true">
+            <input matInput type="text" required="true" formControlName="alter_ego">
           </mat-form-field>
 
           <mat-form-field class="col-12">
             <mat-label> Primera aparición </mat-label>
-            <input matInput type="text" required="true">
+            <input matInput type="text" required="true" formControlName="first_appearance">
           </mat-form-field>
 
           <mat-form-field class="col-12">
             <mat-label> Personajes </mat-label>
-            <input matInput type="text" required="true">
+            <input matInput type="text" required="true" formControlName="characters">
           </mat-form-field>
 
           <mat-form-field class="col-12">
             <mat-label> Creador </mat-label>
-            <mat-select>
+            <mat-select formControlName="publisher">
               @for (publisher of publishers; track $index) {
                 <mat-option [value]="publisher.id"> {{ publisher.desc }} </mat-option>
               }
             </mat-select>
           </mat-form-field>
-        </div>
+
+          <mat-form-field class="col-12">
+            <mat-label> Imagen alternativa </mat-label>
+            <input matInput type="text" formControlName="alt_img">
+          </mat-form-field>
+        </form>
 
         <div class="flex justify-content-between">
-          <button mat-flat-button color="warn">
-            <mat-icon>delete</mat-icon>
-            Borrar
-          </button>
 
-          <button mat-flat-button color="primary">
+          @if (currentHero.id) {
+            <button mat-flat-button color="warn" (click)="onDeleteHero()">
+              <mat-icon>delete</mat-icon>
+              Borrar
+            </button>
+          }
+
+          <span></span>
+
+          <button mat-flat-button color="primary" (click)="onSubmit()">
             <mat-icon>save</mat-icon>
             Guardar
           </button>
@@ -63,8 +71,10 @@
   <div class="col-12 sm:col-6">
 
     <mat-card>
-      <img src="" alt="imagen del héroe" mat-card-image>
+      <img [src]="currentHero | heroImage" alt="imagen del héroe" mat-card-image>
     </mat-card>
 
   </div>
 </div>
+
+

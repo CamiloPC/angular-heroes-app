@@ -21,7 +21,8 @@
       "publisher": "DC Comics",
       "alter_ego": "Kal-El",
       "first_appearance": "Action Comics #1",
-      "characters": "Kal-El"
+      "characters": "Kal-El",
+      "alt_img": null
     },
     {
       "id": "dc-flash",
@@ -166,6 +167,15 @@
       "alter_ego": "Norrin Radd",
       "first_appearance": "The Fantastic Four #48",
       "characters": "Norrin Radd"
+    },
+    {
+      "id": "LCL6fOO",
+      "superhero": "KK",
+      "publisher": "DC Comics",
+      "alter_ego": "Camilo",
+      "first_appearance": "La Habana 1999",
+      "characters": "Camilo Pujol Coll",
+      "alt_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfYTefuFWZ2YHTVm5KgiZc8VjTpCkQTjg8vg&s"
     }
   ]
 }
