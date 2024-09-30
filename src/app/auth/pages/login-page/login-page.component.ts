@@ -4,6 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -22,4 +24,14 @@ import { MatInputModule } from '@angular/material/input';
     }
   `,
 })
-export class LoginPageComponent { }
+export class LoginPageComponent {
+
+  constructor( private authService: AuthService, private router: Router ) {}
+
+  onLogin() {
+    this.authService.login('camilo@gmail.com', '12345')
+      .subscribe( user => {
+        this.router.navigate(['/'])
+      } )
+  }
+ }

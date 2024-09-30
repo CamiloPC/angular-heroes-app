@@ -6,7 +6,7 @@
       <span>Menu</span>
       <span class="spacer"></span>
       <button mat-icon-button (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
+        <mat-icon>exit_to_app</mat-icon>
       </button>
 
     </mat-toolbar>
@@ -32,9 +32,15 @@
 
     <span class="spacer"></span>
 
-    <button mat-button>
-      Logout
-    </button>
+    <div>
+      <mat-icon>account_circle_icon</mat-icon>
+      <span style="padding-right: 1rem;"> {{ user?.user }} </span>
+
+      <button mat-button (click)="onLogout()">
+        Logout
+      </button>
+    </div>
+
 
   </mat-toolbar>
 
